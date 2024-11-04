@@ -126,22 +126,30 @@ export function ResList() {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-        {listRes.map((res) => (
+        { listRes.length === 0
+          ? 
+          <Pressable onRefresh={onRefresh}>
+            <Text>Recargar</Text>
+          </Pressable>
+          :
+          listRes.slice(limit.inf , limit.sup).map((res) => (
           <ResItem key={res.ID} res={res} />
         ))}
+
+        <View style={styles.pagination}>
+          <Pressable onPress={() => onChangeLimit('-')}>
+            <Text style={styles.pageText}>{'Anterior << '}</Text>
+          </Pressable>
+          <Text style={styles.pageText}>
+            {`Página: ${Math.ceil(limit.sup / 15)} de ${Math.ceil(response.length / 15)}`}
+          </Text>
+          <Pressable onPress={() => onChangeLimit('+')}>
+            <Text style={styles.pageText}>{' >> Siguiente'}</Text>
+          </Pressable>
+        </View>
+        
       </ScrollView>
 
-      <View style={styles.pagination}>
-        <Pressable onPress={() => onChangeLimit('-')}>
-          <Text style={styles.pageText}>{'Anterior << '}</Text>
-        </Pressable>
-        <Text style={styles.pageText}>
-          {`Página: ${Math.ceil(limit.sup / 15)} de ${Math.ceil(response.length / 15)}`}
-        </Text>
-        <Pressable onPress={() => onChangeLimit('+')}>
-          <Text style={styles.pageText}>{' >> Siguiente'}</Text>
-        </Pressable>
-      </View>
     </>
   );
 }
@@ -179,10 +187,15 @@ const styles = StyleSheet.create({
   pagination: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20,
+    paddingBottom: 20,
   },
   pageText: {
     fontSize: 16,
+  },
+  scrollView: {
+    flexGrow: 1,
+    padding: 10,
+    paddingBottom: 100,
   },
 });
 
