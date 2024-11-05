@@ -1,10 +1,13 @@
 import { View, Text, Pressable, StyleSheet} from 'react-native'
+import ResIndividual from '../../views/resIndividual/resIndividual'
+import { useLocalSearchParams } from 'expo-router'
 
-
-export default function ResIndividual() {
+export default function Res() {
+  const { res } = useLocalSearchParams()
   return (
     <View style={StyleSheet.container}>
-      <Text>ResIndividual</Text>
+      <Text>{res}</Text>
+      <ResIndividual/>
     </View>
   )
 }

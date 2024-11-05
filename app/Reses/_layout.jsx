@@ -8,12 +8,6 @@ export default function _layout() {
       screenOptions={{
         headerShown: false
       }}>
-        <Stack.Screen 
-          
-          name="ResList"/>
-        <Stack.Screen 
-          name="ResIndividual" 
-        />
       </Stack>
     </View>
   )
