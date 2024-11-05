@@ -3,32 +3,14 @@ import { RefreshControl, View, Text, TextInput, ScrollView, StyleSheet, Pressabl
 import { ResItem } from "./components/ResItem";
 import { createRes, getRes } from "../../services/res";
 import { getResModal } from "../../services/forms";
-//import { Modal } from "../../components/Modal";
-
-const campos = {
-  Numero: { label: 'Número', type: 'number', value: 0 },
-  Nombre: { label: 'Nombre', type: 'text', value: '' },
-  Tipo: { label: 'Tipo', type: 'select', value: ['Leche', 'Carne', 'Doble Proposito'] },
-  FechaNacimiento: { label: 'Fecha de Nacimiento', type: 'date', value: '' },
-  Estado: { label: 'Estado', type: 'select', value: ['Activa', 'Vendida', 'Muerte'] },
-  Madre: { label: 'Madre', type: 'select', value: [''] },
-  Padre: { label: 'Padre', type: 'select', value: [''] },
-  PesoActual: { label: 'Peso Actual', type: 'number', value: 0 },
-  PesoNacimiento: { label: 'Peso de Nacimiento', type: 'number', value: 0 },
-  Sexo: { label: 'Sexo', type: 'select', value: ['F', 'M'] },
-  Raza: { label: 'Raza', type: 'text', value: '' },
-  NumeroPartos: { label: 'Número de Partos', type: 'number', value: 0 },
-  RegistroICA: { label: 'Registro ICA', type: 'text', value: '' },
-  Observaciones: { label: 'Observaciones', type: 'text', value: '' },
-  FincaID: { label: 'Finca ID', type: 'select', value: [''] }
-};
+import { ModalCreateRes } from "./components/ModalCreateRes";
 
 export function ResList() {
   const [inputValue, setInputValue] = useState('');
   const [response, setResponse] = useState([]);
   const [listRes, setListRes] = useState([]);
   const [createModal, setCreateModal] = useState(false);
-  const [fields, setFields] = useState(campos);
+  const [fields, setFields] = useState([]);
   const [limit, setLimit] = useState({ inf: 0, sup: 15 });
 
   const [refreshing, setRefreshing] = React.useState(false);
@@ -69,7 +51,7 @@ export function ResList() {
   };
 
   const HandleAdd = async () => {
-    await fetchDataForm();
+    //await fetchDataForm();
     setCreateModal(true);
   };
 
@@ -105,20 +87,13 @@ export function ResList() {
   return (
     <>
       <View style={styles.topSection}>
+        <ModalCreateRes/>
         <TextInput
           style={styles.searchInput}
           placeholder="Ingrese el Id o el Nombre"
           value={inputValue}
           onChangeText={handleInputChange}
         />
-        <Pressable onPress={HandleAdd} >
-          <Text>Agregar Res</Text>
-        </Pressable>
-        {/* {createModal && (
-          <Modal Handlesubmit={ModalSubmitCreate} fields={fields} setOpenModal={setCreateModal}>
-            <Text style={styles.modalTitle}>Registrar Nacimiento o Nueva Res</Text>
-          </Modal>
-        )} */}
       </View>
 
       <ScrollView
