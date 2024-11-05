@@ -3,40 +3,42 @@ import { View, Text, Image, StyleSheet, Pressable} from 'react-native';
 import { NumeroRes } from '../../../components/NumeroRes';
 import { daysToYearsandMonths } from "../../../utils/DaysToYearsandMonths";
 import PropTypes from 'prop-types';
-import { useNavigation } from '@react-navigation/native';
 import { Link } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
 import { SERVER_URL } from '@env';
 
-export function ResItem({ res: { ID: id, Numero, Nombre, Tipo, Edad, NumeroCrias, FincaNombre } }) {
+export function ResItem({ res }) {
+  const { ID: id, Numero, Nombre, Tipo, Edad, FincaNombre, Peso } = res;
   const navigation = useNavigation();
 
   useEffect(() => {}, []);
+  console.log(res)
 
   return (
     <View style={styles.card}>
-      <Link href="/ResIndividual" asChild>
-        <Image
-          style={styles.image}
-          source={{ uri: `${SERVER_URL}/imagen/id/${id}` }}
-          alt="Cow Image"
-        />
-      </Link>
+      <Link href={{
+          pathname: '/Reses/[res]',
+          params: { res: id }
+        }}
+         asChild>
+        <Pressable>
+          <Image
+            style={styles.image}
+            source={{ uri: `${SERVER_URL}/imagen/id/${id}` }}
+            alt="Cow Image"
+            />
 
-      <View style={styles.cardInfo}>
-        <Pressable onPress={() => navigation.navigate('ResIndividual')}>
-          <View style={styles.especial}>
-            <Text style={styles.nombre}>{Nombre}</Text>
-            <NumeroRes id={id} numero={Numero} tipo={Tipo} />
+          <View style={styles.cardInfo}>
+              <View style={styles.especial}>
+                <Text style={styles.nombre}>{Nombre}</Text>
+                <NumeroRes id={id} numero={Numero} tipo={Tipo} />
+              </View>
+              <Text style={styles.text}><Text style={styles.label}>Edad:</Text> {daysToYearsandMonths(Edad)}</Text>
+              <Text style={styles.text}><Text style={styles.label}>Ubicación:</Text> {FincaNombre}</Text>
+              <Text style={styles.text}><Text style={styles.label}>Peso Actual:</Text> {Peso} </Text>
           </View>
-
-          <Text style={styles.text}><Text style={styles.label}>N° Crias:</Text> {NumeroCrias}</Text>
-          <Text style={styles.text}><Text style={styles.label}>Edad:</Text> {daysToYearsandMonths(Edad)}</Text>
-          <Text style={styles.text}><Text style={styles.label}>Ubicación:</Text> {FincaNombre}</Text>
-          <Text style={styles.text}><Text style={styles.label}>Peso Actual:</Text> 500kg</Text>
-          <Text style={styles.text}><Text style={styles.label}>Raza:</Text> Holstein</Text>
-          <Text style={styles.text}><Text style={styles.label}>Tipo:</Text> {Tipo}</Text>
         </Pressable>
-      </View>
+      </Link>
     </View>
   );
 }
