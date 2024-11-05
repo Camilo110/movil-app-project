@@ -35,7 +35,8 @@ export const updateRes = async (id, bodys) => {
 }
 
 export const createRes = async (res) => {
-  const resp = await fetch('http://localhost:4000/res', {
+  console.log(res)
+  const resp = await fetch(`${SERVER_URL}/res`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -43,6 +44,7 @@ export const createRes = async (res) => {
     body: JSON.stringify(res)
   });
   const {body} = await resp.json();
-  return body;
-}
+  console.log(body, "RESP")
+    return body;
+  }
 
