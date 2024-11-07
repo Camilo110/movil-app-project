@@ -40,8 +40,8 @@ NumeroRes.propTypes = {
 
 const styles = StyleSheet.create({
   resNumero: {
-    padding: 10,
-    borderRadius: 8,
+    padding: 7,
+    borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
   },
