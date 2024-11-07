@@ -8,13 +8,13 @@ return body;
 
 
 export const getResById = async (id) => {
-  const res = await fetch(`http://localhost:4000/res/${id}`);
+  const res = await fetch(`${SERVER_URL}/res/${id}`);
   const {body} = await res.json();
   return body;
 }
 
 export const getHijos = async (id) => {
-  const ListHijos = await fetch(`http://localhost:4000/res/hijos/${id}`);
+  const ListHijos = await fetch(`${SERVER_URL}/res/hijos/${id}`);
   if (ListHijos.status === 200) {
     const {body} = await ListHijos.json();  
     return body;
