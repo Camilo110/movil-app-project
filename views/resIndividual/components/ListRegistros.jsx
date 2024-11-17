@@ -1,5 +1,5 @@
 import { StyleSheet, Text, ScrollView, View } from 'react-native'
-import ItemRegistro from './ItemRegistro'
+import ItemRegistro from '../../../components/itemRegistro'
 import { useEffect, useState } from 'react'
 import {getServicio} from '../../../services/servicio'
 
