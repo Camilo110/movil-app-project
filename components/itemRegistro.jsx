@@ -1,9 +1,10 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native'
-import PropTypes from 'prop-types'
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { Pressable } from 'react-native';
 
-export default function ItemRegistros({ body: { ID, Numero, ResID, listInsumos, Tipo, ...body }, onDelete, onEdit }) {
+export default function ItemRegistro({ body: { ID, Numero, ResID, listInsumos, Tipo, ...body }, onDelete, onEdit }) {
   return (
-    <View style={styles.tarjetaRegistro}>
+    <Pressable style={styles.tarjetaRegistro}>
       <View style={styles.numero}>
         <Text style={styles.numeroText}>{Tipo}</Text>
         <Text style={styles.numeroText}>N° {Numero}</Text>
@@ -20,14 +21,8 @@ export default function ItemRegistros({ body: { ID, Numero, ResID, listInsumos, 
         )}
       </View>
       
-    </View>
+    </Pressable>
   )
-}
-
-ItemRegistros.propTypes = {
-  body: PropTypes.object.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
 }
 
 const styles = StyleSheet.create({
