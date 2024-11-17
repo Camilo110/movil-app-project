@@ -1,4 +1,4 @@
-import { SERVER_URL } from '@env';
+import { SERVER_URL } from '../config'
  
 export const getRes = async () => {
 const resp= await fetch(`${SERVER_URL}/res`);
@@ -23,7 +23,7 @@ export const getHijos = async (id) => {
 
 export const updateRes = async (id, bodys) => {
   console.log(bodys, "BODY")
-  const resp = await fetch(`http://localhost:4000/res/${id}`, {
+  const resp = await fetch(`${SERVER_URL}/res/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

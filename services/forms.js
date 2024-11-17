@@ -1,4 +1,4 @@
-import { SERVER_URL } from '@env';
+import { SERVER_URL } from '../config'
 
 export const getResModal = async () => {
   const resp= await fetch(`${SERVER_URL}/finca`);
@@ -16,8 +16,9 @@ export const getResModal = async () => {
 
  export const getProduccionModal = async () => {
   const response= await fetch(`${SERVER_URL}/res`);
+  console.log(response.status)
   const {body: reses} = await response.json();
-  const res = reses.map(({ID, Numero, Nombre, Sexo}) => ({ID, Numero, Nombre, Sexo, selected: false}))
+  const res = reses.map(({ID, Numero, Nombre}) => ({key: ID, value: `${Numero} - ${Nombre.slice(0,10)}`}))
 
   return res
  }
