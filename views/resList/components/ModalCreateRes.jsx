@@ -3,20 +3,20 @@ import {Alert, Modal, StyleSheet, Text, TextInput, Pressable, View, ScrollView} 
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { createRes } from '../../../services/res';
-import { InputNumber, InputSelect, InputDate } from '../../../components/Fields';
+import { InputNumber, InputSelect, InputDate } from '../../../components/Inputs';
 import { getResModal } from '../../../services/forms';
 
 const constValues = {
   Numero: 0,
   Nombre: "",
-  Tipo: "",
+  Tipo: "Leche",
   FechaNacimiento: new Date().toISOString().split('T')[0],
-  Estado: "",
+  Estado: "Activa",
   Madre: "",
   Padre: "",
   PesoActual: 0,
   PesoNacimiento: 0,
-  Sexo: "",
+  Sexo: "Hembra",
   Raza: "",
   NumeroPartos: 0,
   RegistroICA: "",
@@ -65,7 +65,7 @@ export function ModalCreateRes() {
               <Text>
                 Crear Res
               </Text>
-              <ScrollView>
+              <ScrollView style={{width:'100%'}}>
                 <InputNumber 
                   label="Número"
                   value={values.Numero}
