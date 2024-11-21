@@ -1,12 +1,9 @@
 import { StyleSheet, View, Text } from "react-native"
-import { Link } from "expo-router"
+import { ModalCreateRes } from "../views/resList/components/ModalCreateRes"
+import ListRegistros from "../views/resIndividual/components/ListRegistros"
 export default function Index(){
   return (
     <View style={styles.container}>
-      <Link href={"/prueba"}>
-        ir a prueba
-      </Link>
-
       <Text style={styles.title}> Dashboard </Text>
     </View>
   )
@@ -19,6 +16,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     backgroundColor: 'white',
+    width: '100%',
   },
   title: {
     fontSize: 24,

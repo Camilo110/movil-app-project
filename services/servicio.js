@@ -1,4 +1,5 @@
-import { SERVER_URL } from '@env';
+import { SERVER_URL } from '../config'
+
  
 export const getServicio = async () => {
   const resp = await fetch(`${SERVER_URL}/servicio`);

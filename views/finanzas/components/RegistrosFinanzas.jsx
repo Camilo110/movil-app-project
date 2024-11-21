@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
-export default function servicios() {
+import React from 'react'
+
+export default function RegistrosFinanzas() {
   return (
     <View>
-      <Text>servicios</Text>
+      <Text>RegistrosFinanzas</Text>
     </View>
   )
 }

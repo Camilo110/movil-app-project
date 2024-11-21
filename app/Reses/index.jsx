@@ -6,7 +6,7 @@ export default function ResList() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex:1}}>
-        <ResListComponent />      
+        <ResListComponent/>      
       </SafeAreaView>
     </SafeAreaProvider>
   )

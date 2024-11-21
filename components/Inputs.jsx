@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native'
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { MultipleSelectList } from 'react-native-dropdown-select-list'
+import { SelectList } from 'react-native-dropdown-select-list'
 import { useState } from 'react';
 
 export function InputNumber({label, value, onChange,  ...props}) {
@@ -116,7 +116,7 @@ export function InputSelectList({data, value, label, onChange, ...props}) {
       <Text>
         {label}
       </Text>
-      <MultipleSelectList
+      <SelectList
         data={data}
         selected={value}
         setSelected={onChange}

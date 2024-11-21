@@ -13,7 +13,7 @@ export function ResList() {
   const [fields, setFields] = useState([]);
   const [limit, setLimit] = useState({ inf: 0, sup: 15 });
 
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     fetchRes();
