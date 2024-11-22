@@ -1,6 +1,6 @@
 import { FlatList, Image, StyleSheet, View, Dimensions, TouchableOpacity, Text } from 'react-native'
 import { useRef, useState } from 'react'
-import { SERVER_URL } from '@env'
+import { SERVER_URL } from '../../../config'
 
 export default function ListImagen({ imageIds = ['00000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-000000000007', '00000000-0000-0000-0000-000000000005'] }) {
   const screenWidth = Dimensions.get('window').width;  // Ancho de la pantalla

@@ -73,7 +73,7 @@ export default function Layout() {
           }}
         />
          <Drawer.Screen
-          name="Secado" // This is the name of the page and must match the url from root
+          name="secado" // This is the name of the page and must match the url from root
           options={{
             drawerIcon: ({ size }) => (
               <Image
@@ -86,7 +86,7 @@ export default function Layout() {
           }}
         />
          <Drawer.Screen
-          name="Finanzas" // This is the name of the page and must match the url from root
+          name="finanzas" // This is the name of the page and must match the url from root
           options={{
             drawerIcon: ({ size }) => (
               <Image
