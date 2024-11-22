@@ -2,8 +2,8 @@ import { StyleSheet, Text, View } from 'react-native'
 import { InputText } from '../../../components/Inputs'
 import { useState, useEffect } from 'react'
 import { ScrollView } from 'react-native'
-import {getServicio} from '../../../services/servicio'
-import ItemRegistro from '../../../components/itemRegistro'
+import {getProduccion} from '../../../services/produccion'
+import ItemRegistros from './ItemRegistros'
 
 export default function RegistrosList() {
   const [registros, setRegistros] = useState([])
@@ -13,21 +13,23 @@ export default function RegistrosList() {
   }, [])
 
   const fetchRegistros = async () => {
-    const registros = await getServicio()
+    const registros = await getProduccion()
     setRegistros(registros)
   }
   
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>Registros</Text>
-      <InputText styles={styles.input}placeholder="Fecha o Numero de Res" label={'Buscar Registros'} />
+        <InputText styles={styles.input}placeholder="Fecha o Numero de Res" label={'Buscar Registros'} />
 
-      {
-        registros.map((registro) => {
-          return <ItemRegistro key={registro.ID} body={registro} />
-        })
-      }
-    </ScrollView>
+      <ScrollView>
+        {
+          registros.map((registro) => {
+            return <ItemRegistros key={registro.ID} body={registro} />
+          })
+        }
+      </ScrollView>
+    </View>
   )
 }
 
