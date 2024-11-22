@@ -4,7 +4,6 @@ import { NumeroRes } from '../../../components/NumeroRes';
 import { daysToYearsandMonths } from "../../../utils/DaysToYearsandMonths";
 import PropTypes from 'prop-types';
 import { Link } from 'expo-router';
-import { useNavigation } from '@react-navigation/native';
 import { SERVER_URL } from '../../../config'
 
 export function ResItem({ res }) {
