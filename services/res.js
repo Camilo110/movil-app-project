@@ -35,7 +35,6 @@ export const updateRes = async (id, bodys) => {
 }
 
 export const createRes = async (res) => {
-  console.log(res)
   const resp = await fetch(`${SERVER_URL}/res`, {
     method: 'POST',
     headers: {

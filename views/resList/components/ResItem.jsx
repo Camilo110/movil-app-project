@@ -9,9 +9,6 @@ import { SERVER_URL } from '../../../config'
 export function ResItem({ res }) {
   const { ID: id, Numero, Nombre, Tipo, Edad, FincaNombre, Peso } = res;
 
-  useEffect(() => {}, []);
-  console.log(res)
-
   return (
     <View style={styles.card}>
       <Link href={{
