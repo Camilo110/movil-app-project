@@ -88,24 +88,30 @@ export default function ResIndividual({id}) {
             <Pressable>
               <Text>Eliminar</Text>
             </Pressable>
+            <Pressable>
+              <Text>Imagen</Text>
+            </Pressable>
           </View>
         </View> 
+        
           <ListImagen id = {id}/>
 
-          <View className='info-res'>
-            <Text style={{fontWeight: 'bold'}}>Información</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Número de partos:</Text> {res.NumeroCrias}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Ubicación:</Text> {res.FincaNombre}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Edad:</Text> {daysToYearsandMonths(res.Edad)}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Estado:</Text> {res.Estado}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Peso al Nacer:</Text> {res.PesoNacimiento} Kg</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Peso Actual:</Text> {res.PesoActual} Kg</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Cantidad de Hijos:</Text> {numHijo}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Tipo:</Text> {res.Tipo}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Sexo:</Text> {res.Sexo}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Raza:</Text> {res.Raza}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Registro ICA:</Text> {res.RegistroICA}</Text>
-            <Text><Text style={{fontWeight: 'bold'}}>Observaciones:</Text> {res.Observaciones}</Text>
+          <View style={styles.infoExt}>
+            <View style={styles.info}>
+              <Text style={{fontWeight: 'bold'}}>Información</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Número de partos:</Text> {res.NumeroCrias}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Ubicación:</Text> {res.FincaNombre}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Edad:</Text> {daysToYearsandMonths(res.Edad)}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Estado:</Text> {res.Estado}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Peso al Nacer:</Text> {res.PesoNacimiento} Kg</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Peso Actual:</Text> {res.PesoActual} Kg</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Cantidad de Hijos:</Text> {numHijo}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Tipo:</Text> {res.Tipo}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Sexo:</Text> {res.Sexo}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Raza:</Text> {res.Raza}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Registro ICA:</Text> {res.RegistroICA}</Text>
+              <Text><Text style={{fontWeight: 'bold'}}>Observaciones:</Text> {res.Observaciones}</Text>
+            </View>
           </View>
           
           <Text>
@@ -115,7 +121,7 @@ export default function ResIndividual({id}) {
           <Text>
             Registros
           </Text>
-          <ListRegistros/>
+          <ListRegistros id={id}/>
         </>
       }
       </ScrollView>
@@ -143,5 +149,17 @@ const styles = StyleSheet.create({
     padding: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
+  },
+  infoExt: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    
+  },
+  info: {
+    backgroundColor: 'lightgray',
+    padding: 10,
+    borderRadius: 15,
+
   }
 })
