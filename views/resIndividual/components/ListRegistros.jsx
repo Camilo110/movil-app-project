@@ -1,25 +1,57 @@
 import { StyleSheet, Text, ScrollView, View } from 'react-native'
 import ItemRegistro from '../../../components/itemRegistro'
 import { useEffect, useState } from 'react'
-import {getServicio} from '../../../services/servicio'
+import { getServicioByIdRes, deleteServicio, getServicioWithInseminacionByIdRes, getSecadoByIdRes } from '../../../services/servicio'
 
-export default function ListRegistros() {
-  const [registros, setRegistros] = useState([])
+
+export default function ListRegistros({id}) {
+  const [servicios, setServicios] = useState([])
+  const [secados, setSecados] = useState([])
+  const [insemianciones, setInseminaciones] = useState([])
   useEffect(() => {
-    fetchRegistros()
+    fetchServicios()
   }, [])
 
-  const fetchRegistros = async () => {
-    const registros = await getServicio()
-    setRegistros(registros)
+  const fetchServicios = async () => {
+    const servicios = await getServicioByIdRes(id)
+    setServicios(servicios)
+
+    const secado = await getSecadoByIdRes(id)
+    setSecados(secado)
+
+    const inseminacion = await getServicioWithInseminacionByIdRes(id)
+    setInseminaciones(inseminacion)
   }
 
 
   return (
     <View style={styles.container}>
+      <Text>
+        Servicios
+      </Text>
     <ScrollView horizontal={true}>
-      {
-        registros.map((registro) => (
+      { servicios &&
+        servicios.map((registro) => (
+          <ItemRegistro key={registro.ID} body={registro} />
+        ))
+      }
+    </ScrollView>
+    <Text>
+        Secado
+      </Text>
+    <ScrollView horizontal={true}>
+      { secados &&
+        secados.map((registro) => (
+          <ItemRegistro key={`${registro.ID}`} body={registro} />
+        ))
+      }
+    </ScrollView>
+    <Text>
+        Inseminaciones
+      </Text>
+    <ScrollView horizontal={true}>
+      { insemianciones &&
+        insemianciones.map((registro) => (
           <ItemRegistro key={registro.ID} body={registro} />
         ))
       }
