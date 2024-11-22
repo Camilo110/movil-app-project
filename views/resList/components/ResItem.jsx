@@ -5,11 +5,10 @@ import { daysToYearsandMonths } from "../../../utils/DaysToYearsandMonths";
 import PropTypes from 'prop-types';
 import { Link } from 'expo-router';
 import { useNavigation } from '@react-navigation/native';
-import { SERVER_URL } from '@env';
+import { SERVER_URL } from '../../../config'
 
 export function ResItem({ res }) {
   const { ID: id, Numero, Nombre, Tipo, Edad, FincaNombre, Peso } = res;
-  const navigation = useNavigation();
 
   useEffect(() => {}, []);
   console.log(res)

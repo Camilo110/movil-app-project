@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native'
 import { NumeroRes } from '../../../components/NumeroRes';
-import { SERVER_URL } from '@env';
+import { SERVER_URL } from '../../../config'
  
 
 export default function ItemLinaje({ id, nombre, familiaridad }) {

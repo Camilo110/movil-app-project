@@ -1,6 +1,4 @@
 import { StyleSheet, View, Text } from "react-native"
-import { ModalCreateRes } from "../views/resList/components/ModalCreateRes"
-import ListRegistros from "../views/resIndividual/components/ListRegistros"
 export default function Index(){
   return (
     <View style={styles.container}>
