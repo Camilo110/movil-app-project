@@ -35,9 +35,6 @@ export default function ListImagen({ imageIds = ['00000000-0000-0000-0000-000000
 
   return (
     <View style={styles.carouselContainer}>
-      <TouchableOpacity onPress={handlePrev} disabled={currentIndex === 0} style={styles.arrowButton}>
-        <Text style={[styles.arrowText, currentIndex === 0 && styles.disabledText]}>{"<"}</Text>
-      </TouchableOpacity>
 
       <FlatList
         ref={flatListRef}
@@ -49,12 +46,7 @@ export default function ListImagen({ imageIds = ['00000000-0000-0000-0000-000000
         pagingEnabled
         snapToAlignment="center"
         decelerationRate="normal"
-        scrollEnabled={false}
       />
-
-      <TouchableOpacity onPress={handleNext} disabled={currentIndex === imageIds.length - 1} style={styles.arrowButton}>
-        <Text style={[styles.arrowText, currentIndex === imageIds.length - 1 && styles.disabledText]}>{">"}</Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -65,14 +57,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageContainer: {
-    height: 180,
+    height: 220,
     justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
     width: '100%',
     height: '100%',
-    resizeMode: 'cover',
+    resizeMode: 'contain',
   },
   arrowButton: {
     padding: 10,
