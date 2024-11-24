@@ -1,5 +1,6 @@
- export const getAllParaInseminar = async () => {
-  const resp = await fetch('http://localhost:4000/paraInseminar')
+import { SERVER_URL } from "../config"
+export const getAllParaInseminar = async () => {
+  const resp = await fetch(`${SERVER_URL}/paraInseminar`)
   if (resp.status === 200) {
     const {body} = await resp.json()
     return body
@@ -8,7 +9,7 @@
 }
 
 export const getParaInseminarbyId = async (id) => {
-  const resp = await fetch(`http://localhost:4000/paraInseminar/${id}`)
+  const resp = await fetch(`${SERVER_URL}/paraInseminar/${id}`)
   if (resp.status === 200) {
     const {body} = await resp.json()
     return body
@@ -17,7 +18,7 @@ export const getParaInseminarbyId = async (id) => {
 }
 
 export const getParaInseminarSugeridos = async () => {
-  const resp = await fetch(`http://localhost:4000/paraInseminar/sugeridos`)
+  const resp = await fetch(`${SERVER_URL}/paraInseminar/sugeridos`)
   if (resp.status === 200) {
     const {body} = await resp.json()
     return body
@@ -27,7 +28,7 @@ export const getParaInseminarSugeridos = async () => {
 
 
 export const createParaInseminar = async (paraInseminar) => {
-  const resp = await fetch('http://localhost:4000/paraInseminar', {
+  const resp = await fetch(`${SERVER_URL}/paraInseminar`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -39,7 +40,7 @@ export const createParaInseminar = async (paraInseminar) => {
 }
 
 export const updateParaInseminar = async (id) => {
-  const resp = await fetch(`http://localhost:4000/paraInseminar/${id}`, {
+  const resp = await fetch(`${SERVER_URL}/paraInseminar/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

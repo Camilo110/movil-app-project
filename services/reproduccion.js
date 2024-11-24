@@ -1,16 +1,16 @@
-export async function getEnGestacion(){
-  const resp = await fetch(`http://localhost:4000/reproduccion/engestacion`)
+import { SERVER_URL } from "../config"
 
+export async function getEnGestacion(){
+  const resp = await fetch(`${SERVER_URL}/reproduccion/engestacion`)
   if (resp.status === 200) {
     const { body } = await resp.json()
     return body
   }
-
   return []
 }
 
 export async function getInseminacionPorConfirmar(){
-  const resp = await fetch(`http://localhost:4000/reproduccion/porconfirmar`)
+  const resp = await fetch(`${SERVER_URL}/reproduccion/porconfirmar`)
   if (resp.status === 200) {
     const { body } = await resp.json()
     return body
@@ -19,7 +19,7 @@ export async function getInseminacionPorConfirmar(){
 }
 
 export async function ConfirmarInseminacion(id){
-  const resp = await fetch(`http://localhost:4000/reproduccion/confirmarinseminacion/${id}`, {
+  const resp = await fetch(`${SERVER_URL}/reproduccion/confirmarinseminacion/${id}`, {
     headers: {
       'Content-Type': 'application/json'
     },
@@ -33,7 +33,7 @@ export async function ConfirmarInseminacion(id){
   return false
 }
 export async function inseminacionFallida(id){
-  const resp = await fetch(`http://localhost:4000/reproduccion/inseminacionfallida/${id}`, {
+  const resp = await fetch(`${SERVER_URL}/reproduccion/inseminacionfallida/${id}`, {
     headers: {
       'Content-Type': 'application/json'
     },
@@ -47,7 +47,7 @@ export async function inseminacionFallida(id){
 }
 
 export async function getPartos(){
-  const resp = await fetch(`http://localhost:4000/reproduccion/partos`)
+  const resp = await fetch(`${SERVER_URL}/reproduccion/partos`)
 
   if (resp.status === 200) {
     const { body } = await resp.json()
@@ -58,7 +58,7 @@ export async function getPartos(){
 }
 
 export async function getParaSecado(){
-  const resp = await fetch(`http://localhost:4000/reproduccion/parasecado`)
+  const resp = await fetch(`${SERVER_URL}/reproduccion/parasecado`)
 
   if (resp.status === 200) {
     const { body } = await resp.json()
