@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import ListRegistros from '../views/servicios/components/ListRegistros';
+import ServiciosMain from '../views/servicios/Servicios';
 export default function RegistrosServicios() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex:1}}>
-        <ListRegistros/>
+        <ServiciosMain/>
       </SafeAreaView>
     </SafeAreaProvider>
   )
