@@ -40,14 +40,16 @@ NumeroRes.propTypes = {
 
 const styles = StyleSheet.create({
   resNumero: {
-    padding: 7,
-    borderRadius: 6,
+    paddingVertical: 3,
+    paddingHorizontal: 5,
+    margin: 2,
+    borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 14,
   },
 });
