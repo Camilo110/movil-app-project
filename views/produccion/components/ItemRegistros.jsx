@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#E8F6F3', // Color de fondo similar al verde claro
+    backgroundColor: '#E8F6F3',
     padding: 10,
     marginVertical: 5,
     borderRadius: 8,
