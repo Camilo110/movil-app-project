@@ -47,7 +47,7 @@ export default function Layout() {
           }}
         />
          <Drawer.Screen
-          name="reproduccion" // This is the name of the page and must match the url from root
+          name="Reproduccion" // This is the name of the page and must match the url from root
           options={{
             drawerIcon: ({ size }) => (
               <Image
