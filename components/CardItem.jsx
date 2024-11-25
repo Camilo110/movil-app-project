@@ -72,8 +72,8 @@ export default function CardItem({
     card: {
       backgroundColor: '#fff',
       borderRadius: 8,
-      padding: 10,
-      margin: 4,
+      padding: 15,
+      margin: 8,
       shadowColor: '#000',
       shadowOpacity: 0.1,
       shadowRadius: 4,
