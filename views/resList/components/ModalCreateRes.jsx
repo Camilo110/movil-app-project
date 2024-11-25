@@ -212,7 +212,7 @@ export function ModalCreateRes() {
         </Modal>
         
         <Pressable
-          style={[styles.button]}
+          style={styles.button}
           onPress={onOpenModal}>
           <Text style={styles.textStyle}>Agregar Res</Text>
         </Pressable>
@@ -246,6 +246,8 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     padding: 10,
+    margin: 10,
+    marginBottom: 0,
     elevation: 2,
     backgroundColor: '#2196F3',
   },
