@@ -1,9 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
+import InsumosMain from '../views/Insumos/InsumosMain'
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 export default function insumos() {
   return (
-    <View>
-      <Text>insumos</Text>
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={{flex:1}}>
+      <InsumosMain/>
+      </SafeAreaView>
+    </SafeAreaProvider>
   )
 }
 
