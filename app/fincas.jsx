@@ -1,9 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
-export default function fincas() {
+import FincasMain from '../views/fincas/fincasMain'
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+export default function Fincas() {
   return (
-    <View>
-      <Text>fincas</Text>
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={{flex:1}}>
+      <FincasMain/>
+      </SafeAreaView>
+    </SafeAreaProvider>
   )
 }
 
