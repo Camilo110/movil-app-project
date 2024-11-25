@@ -86,7 +86,7 @@ export default function Layout() {
           }}
         />
          <Drawer.Screen
-          name="finanzas" // This is the name of the page and must match the url from root
+          name="Finanzas" // This is the name of the page and must match the url from root
           options={{
             drawerIcon: ({ size }) => (
               <Image
