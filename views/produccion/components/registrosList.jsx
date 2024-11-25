@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
-import { InputText } from '../../../components/Inputs'
 import { useState, useEffect } from 'react'
 import { ScrollView } from 'react-native'
 import {getProduccion} from '../../../services/produccion'
 import ItemRegistros from './ItemRegistros'
+import InputSearch from '../../../components/InputSearch'
 
 export default function RegistrosList() {
+  const [response, setResponse] = useState([])
   const [registros, setRegistros] = useState([])
 
   useEffect(() => {
@@ -14,13 +15,19 @@ export default function RegistrosList() {
 
   const fetchRegistros = async () => {
     const registros = await getProduccion()
+    setResponse(registros)
     setRegistros(registros)
   }
   
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Registros</Text>
-        <InputText styles={styles.input}placeholder="Fecha o Numero de Res" label={'Buscar Registros'} />
+      <InputSearch 
+        placeholder='Buscar por nombre, fecha o tipo'
+        data={response}
+        onChange={setRegistros}
+        keysToFilter={['ResNombre', 'Fecha', 'Tipo']}
+      />
 
       <ScrollView>
         {
@@ -49,14 +56,10 @@ const styles = StyleSheet.create({
       height: 2,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 4
+    shadowRadius: 4,
   },
   title: {
     fontSize: 14,
     fontWeight: 'bold',
-    marginBottom: 20
   },
-  input: {
-    marginBottom: 10
-  }
 })

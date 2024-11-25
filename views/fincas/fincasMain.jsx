@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import { InputText } from '../../components/Inputs'
+import InputSearch from '../../components/InputSearch'
 import { useState, useEffect } from 'react'
 import { ScrollView } from 'react-native'
 import {getFinca} from '../../services/finca'
@@ -7,6 +7,7 @@ import ItemRegistros from '../../components/itemRegistro'
 
 export default function FincasMain() {
   const [registros, setRegistros] = useState([])
+  const [response, setResponse] = useState([])
 
   useEffect(() => {
     fetchRegistros()
@@ -15,12 +16,19 @@ export default function FincasMain() {
   const fetchRegistros = async () => {
     const registros = await getFinca()
     setRegistros(registros)
+    setResponse(registros)
   }
   
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Registros</Text>
-        <InputText styles={styles.input}placeholder="Fecha o Numero de Res" label={'Buscar Registros'} />
+      <InputSearch
+          data={response}
+          value=''
+          onChange={setRegistros}
+          placeholder={'Nombre de Finca'}
+          keysToFilter={['Nombre']}
+      />
 
       <ScrollView>
         {

@@ -4,6 +4,7 @@ import { ResItem } from "./components/ResItem";
 import { createRes, getRes } from "../../services/res";
 import { getResModal } from "../../services/forms";
 import { ModalCreateRes } from "./components/ModalCreateRes";
+import InputSearch from "../../components/InputSearch";
 
 export function ResList() {
   const [inputValue, setInputValue] = useState('');
@@ -51,7 +52,6 @@ export function ResList() {
   };
 
   const HandleAdd = async () => {
-    //await fetchDataForm();
     setCreateModal(true);
   };
 
@@ -61,18 +61,12 @@ export function ResList() {
     );
   }
 
-  const handleInputChange = (value) => {
-    setInputValue(value);
-    value ? setListRes(filter(value)) : setListRes(response);
-  };
-
   const ModalSubmitCreate = async (values) => {
     const resp = await createRes(values);
     setCreateModal(false);
     fetchRes();
     setLimit({ inf: 0, sup: 15 });
   };
-
 
 
   const onRefresh = React.useCallback(() => {
@@ -88,11 +82,12 @@ export function ResList() {
     <>
       <View style={styles.topSection}>
         <ModalCreateRes/>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Ingrese el Id o el Nombre"
+        <InputSearch
           value={inputValue}
-          onChangeText={handleInputChange}
+          placeholder="Buscar por número o nombre"
+          data={response}
+          onChange={setListRes}
+          keysToFilter={['Numero', 'Nombre']}
         />
       </View>
 
@@ -103,7 +98,7 @@ export function ResList() {
       }>
         { listRes.length === 0
           ? 
-          <Pressable onRefresh={onRefresh}>
+          <Pressable onPress={onRefresh}>
             <Text>Recargar</Text>
           </Pressable>
           :
@@ -152,7 +147,9 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     paddingHorizontal: 10,
-    marginBottom: 10,
+    margin: 20,
+    marginBottom: 0,
+    borderRadius: 8,
   },
   modalTitle: {
     fontSize: 18,

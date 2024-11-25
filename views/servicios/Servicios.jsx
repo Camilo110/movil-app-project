@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { ScrollView } from 'react-native'
 import { getServicio } from '../../services/servicio'
 import ItemRegistro from '../../components/itemRegistro'
+import InputSearch from '../../components/InputSearch'
 
 export default function ServiciosMain() {
   const [registros, setRegistros] = useState([])
+  const [response, setResponse] = useState([])
 
   useEffect(() => {
     fetchRegistros()
@@ -15,6 +17,7 @@ export default function ServiciosMain() {
   const fetchRegistros = async () => {
     const registros = await getServicio()
     setRegistros(registros)
+    setResponse(registros)
   }
 
   return (
@@ -23,7 +26,13 @@ export default function ServiciosMain() {
       <Text style={styles.title}>Registros</Text>
 
       <View style={styles.containerHead}>
-        <InputText styles={styles.input} placeholder="Fecha o Numero de Res" label={'Buscar Registros'} />
+        <InputSearch
+          data={response}
+          value=''
+          onChange={setRegistros}
+          placeholder={'Buscar por nombre de Res, fecha o tipo'}
+          keysToFilter={['ResNombre', 'Fecha', 'Tipo']}
+        />
         <Pressable>
           <Text>
             Agregar

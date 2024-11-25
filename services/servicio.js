@@ -24,7 +24,6 @@ export const getServicioByIdRes = async (id) => {
 
 export const getAllServicioWithInseminacion = async () => {
   const resp = await fetch (`${SERVER_URL}/servicio/InseminacionOmonta`);
-  console.log(resp)
   if (resp.status === 200) {
     const { body } = await resp.json();
     return body;

@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { ScrollView } from 'react-native'
 import {getInsumo} from '../../services/Insumo'
 import ItemRegistros from '../../components/itemRegistro'
+import InputSearch from '../../components/InputSearch'
 
 export default function InsumosMain() {
   const [registros, setRegistros] = useState([])
+  const [response, setResponse] = useState([])
 
   useEffect(() => {
     fetchRegistros()
@@ -15,12 +17,19 @@ export default function InsumosMain() {
   const fetchRegistros = async () => {
     const registros = await getInsumo()
     setRegistros(registros)
+    setResponse(registros)
   }
   
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Registros</Text>
-        <InputText styles={styles.input}placeholder="Fecha o Numero de Res" label={'Buscar Registros'} />
+        <InputSearch
+          data={response}
+          value=''
+          onChange={setRegistros}
+          placeholder={'Nombre, fecha Vencimiento o Ingreso'}
+          keysToFilter={['Nombre', 'FechaVencimiento', 'FechaIngreso']}
+        />
 
       <ScrollView>
         {

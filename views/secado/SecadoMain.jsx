@@ -3,13 +3,15 @@ import { getParaSecado } from "../../services/reproduccion"
 import { useEffect, useState } from 'react'
 import ItemRegistro from '../../components/itemRegistro'
 import { getAllSecado } from '../../services/servicio'
-import { InputSearch } from '../../components/Inputs'
+import InputSearch from '../../components/InputSearch'
 import CardItem from '../../components/CardItem'
 
 export default function SecadoMain() {
 
   const [paraSecar, setParaSecar] = useState([])
   const [dataSecado, setDataSecado] = useState([])
+
+  const [responseRegistros, setResponseRegistros] = useState([])
   
   useEffect(()=>{
     FetchData()
@@ -17,30 +19,12 @@ export default function SecadoMain() {
 
   const FetchData = async () => {
     const response = await getParaSecado()
-    setParaSecar([{
-      ResID: '01',
-      ResNombre : 'Prueba',
-      DiasGestacion: 120,
-      FechaParto: '2002-22-10'
-    },{
-      ResID: '02',
-      ResNombre : 'Prueba',
-      DiasGestacion: 120,
-      FechaParto: '2002-22-10'
-    },{
-      ResID: '03',
-      ResNombre : 'Prueba',
-      DiasGestacion: 120,
-      FechaParto: '2002-22-10'
-    },{
-      ResID: '04',
-      ResNombre : 'Prueba',
-      DiasGestacion: 120,
-      FechaParto: '2002-22-10'
-    },])
+    setParaSecar(response)
+
 
     const responseSecado = await getAllSecado()
     setDataSecado(responseSecado)
+    setResponseRegistros(responseSecado)
   }
   return (
     <View style={{flex:1}}>
@@ -63,9 +47,11 @@ export default function SecadoMain() {
       </ScrollView>
 
       <InputSearch
-        label="Buscar"
+        placeholder="Fecha, Nombre res"
         value={''}
-        onChange={() => console.log('first')}
+        onChange={setDataSecado}
+        data={responseRegistros}
+        keysToFilter={['Fecha', 'ResNombre']}
         />
 
     <ScrollView>
@@ -78,5 +64,3 @@ export default function SecadoMain() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({})
