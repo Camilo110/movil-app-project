@@ -94,22 +94,6 @@ export function InputDate({ label, value, onChange, keyValue, ...props }) {
   );
 }
 
-export function InputSearch({label, value, onChange, ...props}) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.label}>
-        {label}
-      </Text>
-      <TextInput
-        value={value}
-        onChangeText={onChange}
-        style={styles.input}
-        {...props}
-      />
-    </View>
-  )
-}
-
 export function InputSelectList({data, value, label, onChange, ...props}) {
   return (
     <View style={styles.container}>
