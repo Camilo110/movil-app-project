@@ -212,9 +212,9 @@ export function ModalCreateRes() {
         </Modal>
         
         <Pressable
-          style={styles.button}
+          style={styles.floatingButton}
           onPress={onOpenModal}>
-          <Text style={styles.textStyle}>Agregar Res</Text>
+          <Text style={styles.buttonText}>Agregar Res</Text>
         </Pressable>
     </>
   );
@@ -243,13 +243,22 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    margin: 10,
-    marginBottom: 0,
-    elevation: 2,
-    backgroundColor: '#2196F3',
+  floatingButton: {
+    position: 'absolute', // Hace que el botón se superponga
+    bottom: 10, // Separación desde la parte inferior
+    left: 20, // Separación desde la izquierda (puedes usar `right` para alinearlo a la derecha)
+    right: 20, // Ancho total (si quieres centrarlo horizontalmente, usa ambos `left` y `right`)
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    borderRadius: 30,
+    alignItems: 'center',
+    zIndex: 10, // Asegura que el botón esté encima
+    elevation: 5,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   buttonCancel: {
     backgroundColor: '#D3D3D3',
