@@ -26,8 +26,10 @@ export const NumeroRes = ({ id, numero, tipo }) => {
   };
 
   return (
-    <View style={[styles.resNumero, { backgroundColor: colorByTipo[tipoRes] }]}>
-      <Text style={styles.text}>{numeroRes}</Text>
+    <View style={{backgroundColor: colorByTipo[tipoRes], borderRadius : 5, marginHorizontal: 5 }}>
+      <View style={styles.resNumero}>
+       <Text style={styles.text}>{numeroRes}</Text>
+      </View>
     </View>
   );
 };
