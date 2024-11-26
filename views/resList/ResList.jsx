@@ -80,8 +80,8 @@ export function ResList() {
 
   return (
     <>
+      <ModalCreateRes/>
       <View style={styles.topSection}>
-        <ModalCreateRes/>
         <InputSearch
           value={inputValue}
           placeholder="Buscar por número o nombre"
@@ -127,29 +127,11 @@ export function ResList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: 10,
     backgroundColor: '#fff',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
   topSection: {
-    marginBottom: 20,
-  },
-  searchLabel: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  searchInput: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    margin: 20,
     marginBottom: 0,
-    borderRadius: 8,
   },
   modalTitle: {
     fontSize: 18,
