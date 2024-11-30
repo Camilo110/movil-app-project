@@ -1,28 +1,15 @@
-import { StyleSheet, View, Text, Pressable } from "react-native"
-import LineGraphic from "../views/Dashboard/components/Line"
-import Dashboard from "../views/Dashboard/Dashboard"
+import { StyleSheet, Text, View } from 'react-native'
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import Login from '../views/login/Login';
 
-export default function Index(){
+export default function Index() {
   return (
-    <View style={styles.container}>
-      <Dashboard />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={{flex:1}}>
+      <Login/>
+      </SafeAreaView>
+    </SafeAreaProvider>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: 'white',
-    width: '100%',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: 'black',
-  },
-})
+const styles = StyleSheet.create({})
