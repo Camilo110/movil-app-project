@@ -22,7 +22,6 @@ export default function InsumosMain() {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Registros</Text>
         <InputSearch
           data={response}
           value=''
@@ -33,9 +32,18 @@ export default function InsumosMain() {
 
       <ScrollView>
         {
-          registros.map((registro) => {
-            return <ItemRegistros key={registro.ID} body={registro} />
-          })
+          registros.map((registro) =>
+            <ItemRegistros 
+              key={registro.ID}
+              data={registro}
+              keyTitle1='Nombre'
+              keyTitle2='Numero'
+              restKeys={['UnidadMedida', 'CantidadActual']}
+              labels={['Unidad de Medida', 'Cantidad']}
+              onDelete={()=>console.log('first')}
+              onEdit={()=>console.log('first')}
+            />
+          )
         }
       </ScrollView>
     </View>
@@ -45,20 +53,8 @@ export default function InsumosMain() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    width: '98%',
-    padding: 10,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 10,
-    margin: 5,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4
+    padding: 5,
+    margin: 3,
   },
   title: {
     fontSize: 14,
