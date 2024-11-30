@@ -31,7 +31,7 @@ export default function RegistrosReproduccion() {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <View>
         <View style={styles.Head}>
           <Text>
@@ -65,9 +65,18 @@ export default function RegistrosReproduccion() {
             />
             <ScrollView>
               {
-                dataServicio.map((registro) => {
-                  return <ItemRegistro key={registro.ID} body={registro} />
-                })
+                dataServicio.map((registro) => (
+                  <ItemRegistro 
+                    key={registro.ID}
+                    data={registro}
+                    keyTitle1='ResNombre'
+                    keyTitle2='Numero'
+                    restKeys={['Fecha', 'listInsumos']}
+                    labels={['Fecha', 'Productos']}
+                    onDelete={()=>console.log('first')}
+                    onEdit={()=>console.log('first')}
+                  />
+                ))
               }
             </ScrollView>
           </>
@@ -83,7 +92,15 @@ export default function RegistrosReproduccion() {
             <ScrollView>
               {
                 dataPartos.map((registro) => {
-                  return <ItemRegistro key={registro.HijoID} body={registro} />
+                  return <ItemRegistro 
+                  key={registro.ID}
+                  data={registro}
+                  keyTitle1='ResNombre'
+                  restKeys={['FechaParto', 'HijoNombre']}
+                  labels={['Fecha', 'Nombre Hijo']}
+                  onDelete={()=>console.log('first')}
+                  onEdit={()=>console.log('first')}
+                />
                 })
               }
             </ScrollView>
@@ -101,5 +118,9 @@ const styles = StyleSheet.create({
     padding: 5,
     marginBottom: 5,
     gap: 10
-  }
+  },
+  container: {
+    flex: 1,
+    paddingHorizontal: 5,
+  },
 })
