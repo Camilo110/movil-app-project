@@ -6,9 +6,12 @@ import { getServicio } from '../../services/servicio'
 import ItemRegistro from '../../components/itemRegistro'
 import InputSearch from '../../components/InputSearch'
 import { useNavigation } from '@react-navigation/native';
+import FormServicios from './components/FormServicios'
 
 export default function ServiciosMain() {
   const navigation = useNavigation();
+
+  const [visible, setModalVisible] = useState(false)
 
   const [registros, setRegistros] = useState([])
   const [response, setResponse] = useState([])
@@ -23,12 +26,16 @@ export default function ServiciosMain() {
     setRegistros(registros)
     setResponse(registros)
   }
+  onOpenModal = () => {
+    setModalVisible(true)
+  }
+
   const configureDrawerOptions = () => {
     navigation.setOptions({
       headerRight: () => (
         <Text
           style={{ padding: 20, color: 'blue', fontWeight: 'bold' }}
-          onPress={() => console.log('Botón derecho presionado')}
+          onPress={onOpenModal}
         >
           Añadir
         </Text>
@@ -62,6 +69,8 @@ export default function ServiciosMain() {
           )
         }
       </ScrollView>
+
+      <FormServicios visible={visible} setModalVisible={setModalVisible}/>
     </View>
   )
 }
