@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native'
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { SelectList } from 'react-native-dropdown-select-list'
+import { MultipleSelectList, SelectList } from 'react-native-dropdown-select-list'
 import { useState } from 'react';
 
 export function InputNumber({label, value, onChange,  ...props}) {
@@ -23,13 +23,13 @@ export function InputNumber({label, value, onChange,  ...props}) {
 export function InputText({label, value, onChange, ...props}) {
   return (
     <View style={styles.container}>
-      <Text>
+      <Text style={styles.label}>
         {label}
       </Text>
       <TextInput 
         value={value}
         onChangeText={onChange}
-        style={{ borderColor: 'black', borderWidth: 1 }}
+        style={styles.input}
         {...props}
       />
     </View>
@@ -38,22 +38,17 @@ export function InputText({label, value, onChange, ...props}) {
 export function InputSelect( {data, value, label, onChange, ...props } ) {
   return (
     <View style={styles.container}>
-      <Text>
+      <Text style={styles.label}>
         {label}
       </Text>
-      <Picker
-        selectedValue={value}
-        onValueChange={onChange}
+      <SelectList
+        style={styles.floatingList}
+        data={data}
+        selected={value}
+        setSelected={onChange}
+        save="key"
         {...props}
-      >
-        <Picker.Item key={"empty"} label={'Seleccionar'} value={''} enabled={false} style={{color: 'gray'}} mode={'dropdown'} />
-
-          { data.length > 0 &&
-            data.map((item) => (
-              <Picker.Item key={item.value} label={item.label} value={item.value} style={{fontSize:12}}  />
-            ))
-          }
-      </Picker>
+      />
     </View>
   )
 }
@@ -97,10 +92,10 @@ export function InputDate({ label, value, onChange, keyValue, ...props }) {
 export function InputSelectList({data, value, label, onChange, ...props}) {
   return (
     <View style={styles.container}>
-      <Text>
+      <Text style={styles.label}>
         {label}
       </Text>
-      <SelectList
+      <MultipleSelectList
         data={data}
         selected={value}
         setSelected={onChange}
@@ -113,9 +108,7 @@ export function InputSelectList({data, value, label, onChange, ...props}) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'start',
     margin: 5,
-    width: '100%',
   },
   label: {
     marginBottom: 2,
@@ -125,7 +118,7 @@ const styles = StyleSheet.create({
     borderColor: '#677483',
     borderWidth: 1,
     borderRadius: 5,
-    padding: 3,
-    width: '100%'
-  }
+    padding: 5,
+    margin: 5,
+  },
 })
