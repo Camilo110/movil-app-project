@@ -21,7 +21,6 @@ export default function FincasMain() {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Registros</Text>
       <InputSearch
           data={response}
           value=''
@@ -32,9 +31,16 @@ export default function FincasMain() {
 
       <ScrollView>
         {
-          registros.map((registro) => {
-            return <ItemRegistros key={registro.ID} body={getFinca} />
-          })
+          registros.map((registro) => 
+             <ItemRegistros
+              key={registro.ID}
+              data={registro}
+              keyTitle1='Nombre'
+              restKeys={['Direccion']}
+              labels={['Dirección']}
+              onEdit={()=>console.log('first')}
+             />
+          )
         }
       </ScrollView>
     </View>
@@ -44,20 +50,8 @@ export default function FincasMain() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    width: '98%',
-    padding: 10,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 10,
-    margin: 5,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4
+    padding: 5,
+    margin: 3,
   },
   title: {
     fontSize: 14,
