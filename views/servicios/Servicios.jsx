@@ -5,12 +5,16 @@ import { ScrollView } from 'react-native'
 import { getServicio } from '../../services/servicio'
 import ItemRegistro from '../../components/itemRegistro'
 import InputSearch from '../../components/InputSearch'
+import { useNavigation } from '@react-navigation/native';
 
 export default function ServiciosMain() {
+  const navigation = useNavigation();
+
   const [registros, setRegistros] = useState([])
   const [response, setResponse] = useState([])
 
   useEffect(() => {
+    configureDrawerOptions();
     fetchRegistros()
   }, [])
 
@@ -19,32 +23,43 @@ export default function ServiciosMain() {
     setRegistros(registros)
     setResponse(registros)
   }
+  const configureDrawerOptions = () => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Text
+          style={{ padding: 20, color: 'blue', fontWeight: 'bold' }}
+          onPress={() => console.log('Botón derecho presionado')}
+        >
+          Añadir
+        </Text>
+      ),
+    });
+  };
 
   return (
     <View style={styles.container}>
       
-      <Text style={styles.title}>Registros</Text>
-
-      <View style={styles.containerHead}>
         <InputSearch
           data={response}
           value=''
           onChange={setRegistros}
-          placeholder={'Buscar por nombre de Res, fecha o tipo'}
+          placeholder={'Nombre de Res, Fecha o Tipo'}
           keysToFilter={['ResNombre', 'Fecha', 'Tipo']}
-        />
-        <Pressable>
-          <Text>
-            Agregar
-          </Text>
-        </Pressable>
-      </View>
-      
+        />      
       <ScrollView >
         {
-          registros.map((registro) => {
-            return <ItemRegistro key={registro.ID} body={registro} />
-          })
+          registros.map((registro) =>  
+          <ItemRegistro 
+            key={registro.ID}
+            data={registro}
+            keyTitle1='Tipo'
+            keyTitle2='Número'
+            restKeys={['Fecha', 'Veterinario', 'ResNombre', 'listInsumos']}
+            labels={['Fecha', 'Veterinario', 'Nombre Res', 'Insumos']}
+            onDelete={()=>console.log('first')}
+            onEdit={()=>console.log('first')}
+          />
+          )
         }
       </ScrollView>
     </View>
@@ -54,20 +69,8 @@ export default function ServiciosMain() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    width: '98%',
-    padding: 10,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 10,
-    margin: 5,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4
+    padding: 3,
+    margin: 5
   },
   containerHead:{
     width: '80%',
