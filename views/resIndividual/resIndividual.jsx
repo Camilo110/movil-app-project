@@ -6,15 +6,25 @@ import { getResById, getHijos } from '../../services/res'
 import { NumeroRes } from '../../components/NumeroRes'
 import { daysToYearsandMonths } from '../../utils/DaysToYearsandMonths'
 import ListRegistros from './components/ListRegistros'
+import { getResModal } from '../../services/forms'
+
+import * as ImagePicker from 'expo-image-picker';
+import { uploadImage } from '../../services/images';
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Feather from '@expo/vector-icons/Feather';
+import { EditResModal } from './components/EditResModal'
 
 export default function ResIndividual({id}) {
 
   const [res, setRes] = useState({})
   const [numHijo, setNumHijo] = useState(0)
   const [loading, setLoading] = useState(true)
-  const [linaje, setLinaje] = useState({})
+  const [linaje, setLinaje] = useState([])
+
+  const [formData, setFormData] = useState({fincas: [], madres: [], padres: []})
+
+  const [openModalEditRes, setOpenModalEditRes] = useState(false)
 
   useEffect(() => {
     fetchRes()
@@ -48,37 +58,74 @@ export default function ResIndividual({id}) {
     setLoading(false)
   }
 
+  const OnEditRes = async () => {
+    const data = await getResModal();
+    if (data) setFormData(data);
+    setOpenModalEditRes(true)
+  }
+
+  const pickImageFromLibrary = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      uploadImage(result.assets[0].uri, id);
+    }
+
+
+  };
+
+  const captureImageFromCamera = async () => {
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      uploadImage(result.assets[0].uri, id);
+    }
+  };
+
   return (
-    <ScrollView style={styles.container}>
-      {
-        loading ? <Text>Cargando...</Text> :
-        <>
+    <>
         <View style={styles.TopInfo}>
           <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
             <NumeroRes id = {id}/>
             <Text style={styles.title}>{res.Nombre}</Text>
           </View>
           <View style={{flexDirection: 'row', gap: 15}}>
-            <Pressable>
-              <MaterialCommunityIcons name="image-plus" size={24} color="black" />
+            <Pressable onPress={captureImageFromCamera}>
+              <MaterialCommunityIcons name="camera" size={30} color="black" />
+            </Pressable>
+            <Pressable  onPress={pickImageFromLibrary}>
+              <MaterialCommunityIcons name="image-plus" size={28} color="black" />
             </Pressable>
             <Pressable>
-              <MaterialCommunityIcons name="circle-edit-outline" size={24} color="black" />
-            </Pressable>
-            <Pressable>
-              <MaterialCommunityIcons name="skull-crossbones" size={24} color="black" />
-            </Pressable>
-            <Pressable>
-              <MaterialCommunityIcons name="cash-check" size={24} color="black" />
+              <MaterialCommunityIcons name="skull-crossbones" size={28} color="black" />
             </Pressable>
           </View>
         </View> 
+      
+      <ScrollView style={styles.container}>
         
           <ListImagen id = {id}/>
 
           <View style={styles.infoExt}>
             <View style={styles.info}>
-              <Text style={{fontWeight: 'bold'}}>Información</Text>
+
+              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Text style={{fontWeight: 'bold'}}>Información</Text>
+                <Pressable onPress={OnEditRes}>
+                  <Feather name="edit" size={24} color="black" />
+                </Pressable>
+              </View>
+                
               {
                 res.Sexo === 'F' ?
                 <Text><Text style={{fontWeight: 'bold'}}>Número de partos:</Text> {res.NumeroCrias}</Text>
@@ -98,27 +145,23 @@ export default function ResIndividual({id}) {
             </View>
           </View>
           
-          <Text>
+          <Text style={styles.title}>
             Linaje
           </Text>
           <ListLinaje listaLinaje = {linaje}/>
           
-          <Text>
-            Registros
-          </Text>
           <ListRegistros id={id}/>
-        </>
-      }
       </ScrollView>
       
+      <EditResModal values={res} setValues={setRes} formData={formData} visible={openModalEditRes} setVisible={setOpenModalEditRes} />
+      
+    </>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    width: '100%',
     padding: 3
   },
   title: {
@@ -132,17 +175,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 5,
-    marginBottom: 10,
     padding:10,
     paddingHorizontal: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
   },
   infoExt: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-    
+    padding: 10
   },
   info: {
     backgroundColor: 'lightgray',
