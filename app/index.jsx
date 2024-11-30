@@ -1,8 +1,11 @@
-import { StyleSheet, View, Text } from "react-native"
+import { StyleSheet, View, Text, Pressable } from "react-native"
+import LineGraphic from "../views/Dashboard/components/Line"
+import Dashboard from "../views/Dashboard/Dashboard"
+
 export default function Index(){
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> Dashboard </Text>
+      <Dashboard />
     </View>
   )
 }

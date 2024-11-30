@@ -4,12 +4,12 @@ export const getResModal = async () => {
   const resp= await fetch(`${SERVER_URL}/finca`);
   console.log("CUIDADO")
   const {body} = await resp.json();
-  const fincas = body.map(({ID, Nombre}) => ({key: ID, label: Nombre}));
+  const fincas = body.map(({ID, Nombre}) => ({key: ID, value: Nombre}));
 
   const response= await fetch(`${SERVER_URL}/res`);
   const {body: reses} = await response.json();
-  const madres = reses.filter(({Sexo}) => Sexo === 'F').map(({ID, Nombre}) => ({key: ID, label: Nombre}))
-  const padres = reses.filter(({Sexo}) => Sexo === 'M').map(({ID, Nombre}) => ({key: ID, label: Nombre}))
+  const madres = reses.filter(({Sexo}) => Sexo === 'F').map(({ID, Nombre}) => ({key: ID, value: Nombre}))
+  const padres = reses.filter(({Sexo}) => Sexo === 'M').map(({ID, Nombre}) => ({key: ID, value: Nombre}))
 
   return {fincas, madres, padres}
  }

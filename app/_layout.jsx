@@ -17,7 +17,7 @@ export default function Layout() {
               />
             ),
             drawerLabel: 'Home',
-            title: 'overview',
+            title: 'Proganadero',
           }}
         />
         <Drawer.Screen
