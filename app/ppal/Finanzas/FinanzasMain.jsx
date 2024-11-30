@@ -1,12 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import SecadoMain from '../views/secado/SecadoMain';
-
-export default function RegistrosServicios() {
+import FormFinanzas from '../../../views/finanzas/components/FormFinanzas';
+export default function Finanzas() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex:1}}>
-        <SecadoMain/>
+        <FormFinanzas/>
       </SafeAreaView>
     </SafeAreaProvider>
   )

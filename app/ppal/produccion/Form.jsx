@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import FormRegister from '../../views/produccion/components/formRegister'
+import FormRegister from '../../../views/produccion/components/formRegister'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
 export default function Form() {

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import ServiciosMain from '../views/servicios/Servicios';
+import ServiciosMain from '../../views/servicios/Servicios';
 export default function RegistrosServicios() {
   return (
     <SafeAreaProvider>

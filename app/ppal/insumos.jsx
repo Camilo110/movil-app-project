@@ -1,12 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
-import RegistrosReproduccion from '../../views/reproduccion/registrosReproduccion'
+import InsumosMain from '../../views/Insumos/InsumosMain'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-
-export default function Registros() {
+export default function insumos() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex:1}}>
-        <RegistrosReproduccion/>
+      <InsumosMain/>
       </SafeAreaView>
     </SafeAreaProvider>
   )

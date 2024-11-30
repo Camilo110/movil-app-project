@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
-import InsumosMain from '../views/Insumos/InsumosMain'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-export default function insumos() {
+import RegistrosFinanzas from '../../../views/finanzas/components/RegistrosFinanzas'
+
+export default function RegistrosFinanzasRoute() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex:1}}>
-      <InsumosMain/>
+        <RegistrosFinanzas/>
       </SafeAreaView>
     </SafeAreaProvider>
   )

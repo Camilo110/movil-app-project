@@ -1,4 +1,4 @@
-import ResIndividual from '../../views/resIndividual/resIndividual'
+import ResIndividual from '../../../views/resIndividual/resIndividual'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router'
 

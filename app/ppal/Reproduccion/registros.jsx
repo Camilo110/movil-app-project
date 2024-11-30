@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
+import RegistrosReproduccion from '../../../views/reproduccion/registrosReproduccion'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import FormFinanzas from '../../views/finanzas/components/FormFinanzas';
-export default function Finanzas() {
+
+export default function Registros() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex:1}}>
-        <FormFinanzas/>
+        <RegistrosReproduccion/>
       </SafeAreaView>
     </SafeAreaProvider>
   )

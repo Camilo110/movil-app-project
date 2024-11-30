@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
-import FincasMain from '../views/fincas/fincasMain'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-export default function Fincas() {
+import ReproduccionMain from '../../../views/reproduccion/Reproduccion'
+
+export default function reproduccion() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex:1}}>
-      <FincasMain/>
+        <ReproduccionMain/>
       </SafeAreaView>
     </SafeAreaProvider>
   )
