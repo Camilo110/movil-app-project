@@ -5,12 +5,16 @@ import { ScrollView } from 'react-native'
 import {getInsumo} from '../../services/Insumo'
 import ItemRegistros from '../../components/itemRegistro'
 import InputSearch from '../../components/InputSearch'
+import { useNavigation } from '@react-navigation/native';
 
 export default function InsumosMain() {
+  const navigation = useNavigation();
+
   const [registros, setRegistros] = useState([])
   const [response, setResponse] = useState([])
 
   useEffect(() => {
+    configureDrawerOptions();
     fetchRegistros()
   }, [])
 
@@ -19,6 +23,19 @@ export default function InsumosMain() {
     setRegistros(registros)
     setResponse(registros)
   }
+
+  const configureDrawerOptions = () => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Text
+          style={{ padding: 20, color: 'blue', fontWeight: 'bold' }}
+          onPress={()=>console.log('first')}
+        >
+          Añadir
+        </Text>
+      ),
+    });
+  };
   
   return (
     <View style={styles.container}>

@@ -5,15 +5,21 @@ import ItemRegistro from '../../components/itemRegistro'
 import { getAllSecado } from '../../services/servicio'
 import InputSearch from '../../components/InputSearch'
 import CardItem from '../../components/CardItem'
+import { useNavigation } from '@react-navigation/native';
+import FormServicios from '../servicios/components/FormServicios'
 
 export default function SecadoMain() {
+  const navigation = useNavigation();
 
   const [paraSecar, setParaSecar] = useState([])
   const [dataSecado, setDataSecado] = useState([])
 
+  const [visible, setModalVisible] = useState(false)
+
   const [responseRegistros, setResponseRegistros] = useState([])
   
   useEffect(()=>{
+    configureDrawerOptions();
     FetchData()
   }, [])
 
@@ -26,6 +32,24 @@ export default function SecadoMain() {
     setDataSecado(responseSecado)
     setResponseRegistros(responseSecado)
   }
+
+  const onOpenModal = () => {
+    console.log('helloooooooo')
+    setModalVisible(true)
+  }
+
+  const configureDrawerOptions = () => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Text
+          style={{ padding: 20, color: 'blue', fontWeight: 'bold' }}
+          onPress={onOpenModal}
+        >
+          Añadir
+        </Text>
+      ),
+    });
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Para Inseminar</Text>
@@ -78,6 +102,7 @@ export default function SecadoMain() {
         )
       }
       </ScrollView>
+      <FormServicios visible={visible} setModalVisible={setModalVisible}/>
     </View>
   )
 }
