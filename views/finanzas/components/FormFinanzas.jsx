@@ -1,14 +1,22 @@
 import { ScrollView, StyleSheet, Text, View, Pressable } from 'react-native'
 import { InputDate, InputNumber, InputSelect, InputText } from '../../../components/Inputs'
+import SplitSwitchButton from './button'
+import { useState } from 'react'
+import ItemRegistro from '../../../components/itemRegistro'
 
 export default function FormFinanzas() {
+
+  const [addProducts, setAddProducts] = useState(false)
+
+  const onEditProducs = () => {
+    setAddProducts(!addProducts)
+  }
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
-        <Text>Registar Movimiento</Text>
-        <Pressable>
-          <Text>Ingreso | Egreso</Text>
-        </Pressable>
+        <Text style={styles.title}>Registar Movimientos</Text>
+
+        <SplitSwitchButton />
 
         <InputNumber
           label='Monto'
@@ -23,7 +31,7 @@ export default function FormFinanzas() {
         />
 
         <InputText
-          label={'descripcion'}
+          label={'Descripcion'}
           placeholder='descripcion'
           value={''}
         />
@@ -61,47 +69,55 @@ export default function FormFinanzas() {
             />
           </View>
           
-          <Pressable>
+          <Pressable onPress={onEditProducs}>
             <Text>
-              Agregar Producto
+              Agregar Productos
             </Text>
           </Pressable>
         
         </View>
 
-        <View>
-          <Text>
-            Productos Seleccionados
-          </Text>
-
+        { addProducts &&
           <View>
             <Text>
-              Nombre Producto  Cantidad Delete
+              Productos Seleccionados
             </Text>
-            <Text>
-              Nombre Producto  Cantidad Delete
-            </Text>
-            <Text>
-              Nombre Producto  Cantidad Delete
-            </Text>
-            <Text>
-              Nombre Producto  Cantidad Delete
-            </Text>
-            <Text>
-              Nombre Producto  Cantidad Delete
-            </Text>
-            <Text>
-              Nombre Producto  Cantidad Delete
-            </Text>
-            <Text>
-              Nombre Producto  Cantidad Delete
-            </Text>
+
+            <View>
+              <ItemRegistro 
+                data={{Nombre: 'Nombre Producto', Numero: 'sss',Cantidad: 'sss'}}
+                keyTitle1={'Nombre'}
+                keyTitle2={'Numero'}
+                restKeys={['Cantidad']}
+                labels={['Cantidad']}
+                onDelete={()=>{}}
+              />
+              <Text>
+                Nombre Producto  Cantidad Delete
+              </Text>
+              <Text>
+                Nombre Producto  Cantidad Delete
+              </Text>
+              <Text>
+                Nombre Producto  Cantidad Delete
+              </Text>
+              <Text>
+                Nombre Producto  Cantidad Delete
+              </Text>
+              <Text>
+                Nombre Producto  Cantidad Delete
+              </Text>
+              <Text>
+                Nombre Producto  Cantidad Delete
+              </Text>
+            </View>
           </View>
-        </View>
+
+        }
       </ScrollView>
 
-      <Pressable>
-        <Text>
+      <Pressable style={styles.button}>
+        <Text style={styles.textStyle}>
           Guardar
         </Text>
       </Pressable>
@@ -109,4 +125,40 @@ export default function FormFinanzas() {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'start',
+    padding: 10,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 10,
+    margin: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4
+  },
+  button: {
+    borderRadius: 20,
+    padding: 13,
+    elevation: 2,
+    marginHorizontal: 20,
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "500",
+    textAlign: "center",
+    fontSize: 16
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 20
+  }
+})
