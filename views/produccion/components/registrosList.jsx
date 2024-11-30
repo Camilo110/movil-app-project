@@ -21,7 +21,6 @@ export default function RegistrosList() {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Registros</Text>
       <InputSearch 
         placeholder='Buscar por nombre, fecha o tipo'
         data={response}
@@ -32,7 +31,7 @@ export default function RegistrosList() {
       <ScrollView>
         {
           registros.map((registro) => {
-            return <ItemRegistros key={registro.ID} body={registro} />
+            return <ItemRegistros key={registro.ID} body={registro} fetch = {fetchRegistros}/>
           })
         }
       </ScrollView>
@@ -43,20 +42,9 @@ export default function RegistrosList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     width: '98%',
-    padding: 10,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 10,
+    paddingHorizontal: 10,
     margin: 5,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
   },
   title: {
     fontSize: 14,
