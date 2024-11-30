@@ -27,6 +27,7 @@ export default function FormRegister() {
   }
 
   const onSubmit = async () => {
+    console.log({...dataForm, ResID: idsSelected})
     const response = await CreateProduccionIndividual({...dataForm, ResID: idsSelected})
     console.log(response)
   }
@@ -79,7 +80,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'start',
     width: '95%',
     padding: 10,
@@ -104,9 +104,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 13,
     elevation: 2,
-    marginBottom: 20,
+    margin: 20,
     backgroundColor: "#2196F3",
-
   },
   textStyle: {
     color: "white",
