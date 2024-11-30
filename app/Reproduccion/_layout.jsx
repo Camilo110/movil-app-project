@@ -9,7 +9,15 @@ export default function _layout() {
       <Tabs
         screenOptions={{
           headerShown: false
-        }}/>
+        }}>
+        <Tabs.Screen
+          name="reproduccion"
+        />
+        <Tabs.Screen
+          name="registros"
+        />         
+      </Tabs>
+        
     </View>
   )
 }
