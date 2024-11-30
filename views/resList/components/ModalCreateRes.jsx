@@ -3,7 +3,7 @@ import {Alert, Modal, StyleSheet, Text, TextInput, Pressable, View, ScrollView} 
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { createRes } from '../../../services/res';
-import { InputNumber, InputSelect, InputDate } from '../../../components/Inputs';
+import { InputNumber, InputSelect, InputDate, InputText } from '../../../components/Inputs';
 import { getResModal } from '../../../services/forms';
 
 const constValues = {
@@ -62,7 +62,7 @@ export function ModalCreateRes() {
           
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text>
+              <Text style={styles.title}>
                 Crear Res
               </Text>
               <ScrollView style={{width:'100%'}}>
@@ -71,29 +71,17 @@ export function ModalCreateRes() {
                   value={values.Numero}
                   onChange={(number) => onChangeValues(number, "Numero")}
                 />
-                <View>
-                  <Text>
-                    Nombre
-                  </Text>
-                  <TextInput
-                    value={values.Nombre}
-                    onChangeText={(text)=>onChangeValues(text, "Nombre")}
-                  />
-                </View>
-                <View>
-                  <Text>
-                    Tipo: {values.Tipo}
-                  </Text>
-                  <Picker
-                    selectedValue={values.Tipo}
-                    onValueChange={(Value) =>
-                      onChangeValues(Value, 'Tipo')
-                    }>
-                    <Picker.Item label="Leche" value="Leche" />
-                    <Picker.Item label="Carne" value="Carne" />
-                    <Picker.Item label="Doble Próposito" value="Doble Proposito" />
-                  </Picker>
-                </View>
+                <InputText
+                  label = 'Nombre'
+                  value={values.Nombre}
+                  onChangeText={(text)=>onChangeValues(text, "Nombre")}
+                />
+                <InputSelect
+                  data={[{value: 'Leche', label: 'Leche'}, {value: 'Carne', label: 'Carne'}, {value: 'Doble Proposito', label: 'Doble Propósito'}]}
+                  value={values.Tipo}
+                  label="Tipo"
+                  onChange={(text) => onChangeValues(text, "Tipo")}
+                />
 
                 <InputDate
                   label="Fecha de Nacimiento"
@@ -102,21 +90,12 @@ export function ModalCreateRes() {
                   onChange={onChangeValues}
                 />
 
-                <View>
-                  <Text>
-                    Estado: jj {values.Estado}
-                  </Text>
-                  <Picker
-                    selectedValue={values.Estado}
-                    onValueChange={(itemValue) =>
-                      onChangeValues(itemValue, 'Estado')
-                    }>
-                    <Picker.Item label="Activa" value="Activa" />
-                    <Picker.Item label="Vendida" value="Vendida" />
-                    <Picker.Item label="Muerte" value="Muerte" />
-                  </Picker>
-                </View>
-
+               <InputSelect
+                  data={[{value: 'Activa', label: 'Activa'}, {value: 'Vendida', label: 'Vendida'}, {value: 'Muerte', label: 'Muerte'}]}
+                  value={values.Estado}
+                  label="Estado"
+                  onChange={(text) => onChangeValues(text, "Estado")}
+                />
                 <InputSelect
                   data={formData.madres}
                   value={values.Madre}
@@ -151,15 +130,11 @@ export function ModalCreateRes() {
                   onChange={(text) => onChangeValues(text, "Sexo")}
                 />
 
-                <View>
-                  <Text>
-                    Raza
-                  </Text>
-                  <TextInput
-                    value={values.Raza}
-                    onChangeText={(text)=>onChangeValues(text, "Raza")}
-                  />
-                </View>
+                <InputText
+                  label = 'Raza'
+                  value={values.Raza}
+                  onChangeText={(text)=>onChangeValues(text, "Raza")}
+                />
 
                 <InputNumber
                   label="Número de Partos" 
@@ -167,25 +142,17 @@ export function ModalCreateRes() {
                   onChange={(number) => onChangeValues(number, "NumeroPartos")}
                 />
 
-                <View>
-                  <Text>
-                    Registro ICA
-                  </Text>
-                  <TextInput
-                    value={values.RegistroICA}
-                    onChangeText={(text)=>onChangeValues(text, "RegistroICA")}
-                  />
-                </View>
+                <InputText
+                  label = 'Registro ICA'
+                  value={values.RegistroICA}
+                  onChangeText={(text)=>onChangeValues(text, "RegistroICA")}
+                />
 
-                <View>
-                  <Text>
-                    Observaciones
-                  </Text>
-                  <TextInput
-                    value={values.Observaciones}
-                    onChangeText={(text)=>onChangeValues(text, "Observaciones")}
-                  />
-                </View>
+                <InputText
+                  label = 'Observaciones'
+                  value={values.Observaciones}
+                  onChangeText={(text)=>onChangeValues(text, "Observaciones")}
+                />
 
                 <InputSelect
                   data={formData.fincas}
@@ -229,10 +196,10 @@ const styles = StyleSheet.create({
   modalView: {
     width: '90%',
     height: '90%',
-    margin: 20,
+    margin: 10,
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 35,
+    padding: 30,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -242,6 +209,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    margin: 5,
+    elevation: 2,
+    backgroundColor: '#2196F3',
   },
   floatingButton: {
     position: 'absolute', // Hace que el botón se superponga
@@ -271,5 +245,9 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
