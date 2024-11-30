@@ -6,7 +6,6 @@ export default function InputSearch({ value = '', placeholder, data, onChange, k
   const [inputValue, setInputValue] = useState(value);
 
   const handleInputChange = (value) => {
-    console.log('enuso')
     setInputValue(value);
     value ? onChange(filter(value, keysToFilter, data)) : onChange(data);
   }
