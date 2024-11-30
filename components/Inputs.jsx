@@ -70,7 +70,7 @@ export function InputDate({ label, value, onChange, keyValue, ...props }) {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => setShowDate(true)}>
+      <Pressable onPress={() => setShowDate(true) } {...props}>
         <Text style={styles.label}>{label}</Text>
         <TextInput 
           editable={false} 
@@ -82,7 +82,6 @@ export function InputDate({ label, value, onChange, keyValue, ...props }) {
         <DateTimePicker
           value={value ? new Date(value) : new Date()}
           onChange={onChangeDate}
-          {...props}
         />
       )}
     </View>
