@@ -4,12 +4,16 @@ import { useState, useEffect } from 'react'
 import { ScrollView } from 'react-native'
 import {getFinca} from '../../services/finca'
 import ItemRegistros from '../../components/itemRegistro'
+import { useNavigation } from '@react-navigation/native';
 
 export default function FincasMain() {
+  const navigation = useNavigation();
+
   const [registros, setRegistros] = useState([])
   const [response, setResponse] = useState([])
 
   useEffect(() => {
+    configureDrawerOptions();
     fetchRegistros()
   }, [])
 
@@ -18,6 +22,19 @@ export default function FincasMain() {
     setRegistros(registros)
     setResponse(registros)
   }
+
+  const configureDrawerOptions = () => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Text
+          style={{ padding: 20, color: 'blue', fontWeight: 'bold' }}
+          onPress={onOpenModal}
+        >
+          Añadir
+        </Text>
+      ),
+    });
+  };
   
   return (
     <View style={styles.container}>
