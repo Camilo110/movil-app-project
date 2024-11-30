@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { getAllParaInseminar, getParaInseminarSugeridos, createParaInseminar } from '../../services/paraInseminar';
 import { getEnGestacion, getInseminacionPorConfirmar, ConfirmarInseminacion, inseminacionFallida, getPartos } from '../../services/reproduccion';
 import { getAllServicioWithInseminacion } from '../../services/servicio';
 import CardItem from '../../components/CardItem'
-import { InputSearch } from '../../components/Inputs';
-import ItemRegistro from '../../components/itemRegistro';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ReproduccionMain() {
+  const navigation = useNavigation();
 
   const [dataEnGestacion, setDataEnGestacion] = useState([])
   const [dataParaInseminar, setDataParaInseminar] = useState([])
@@ -18,9 +18,26 @@ export default function ReproduccionMain() {
   const [dataPartos, setDataPartos] = useState([])
 
   useEffect(() => {
-    FetchEnGestacion()
-  }, [])
+    configureDrawerOptions();
+    FetchEnGestacion();
+  }, []);
 
+  const configureDrawerOptions = () => {
+    
+    const drawerNavigation = navigation.getParent();
+
+    // Configura las opciones del Drawer
+    drawerNavigation?.setOptions({
+      headerRight: () => (
+        <Text
+          style={{ padding: 20, color: 'blue', fontWeight: 'bold' }}
+          onPress={() => console.log('Botón derecho presionado')}
+        >
+          Añadir
+        </Text>
+      ),
+    });
+  };
   const FetchEnGestacion = async () => {
     
       const EnGestacion = await  getEnGestacion()
