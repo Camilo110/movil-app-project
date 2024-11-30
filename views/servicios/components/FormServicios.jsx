@@ -2,8 +2,7 @@ import { StyleSheet, Text, View, Modal, Pressable, ScrollView, TextInput } from 
 import { useState } from 'react'
 import { InputSelect, InputDate, InputText, InputSelectList, InputNumber } from '../../../components/Inputs'
 
-export default function FormServicios() {
-  const [modalVisible, setModalVisible] = useState(false)
+export default function FormServicios({visible , setModalVisible}) {
   const [data, setData] = useState({
     Tipo: '',
     Fecha: '',
@@ -19,8 +18,14 @@ export default function FormServicios() {
     })
   }
   return (
-    <View style={{flex:1, width: '100%',
-      height: '100%', alignItems: 'center', justifyContent:'center'}}>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={visible}
+      onRequestClose={() => {
+        setModalVisible(false);
+      }}
+    >
 
 
         <View 
@@ -124,19 +129,24 @@ export default function FormServicios() {
               </View>
 
             </ScrollView>
-              <Pressable
-                style={[styles.button]}
-                onPress={() => setModalVisible(false)}
-              >
-                <Text
-                  style={[styles.text]}
-                >
-                  Guardar Servicio
-                </Text>
-              </Pressable>
+            <View style={{flexDirection: 'row'}}>
+                <Pressable
+                  style={[styles.button, styles.buttonCancel]}
+                  onPress={()=>setModalVisible(false)}>
+                  <Text style={styles.textStyle}>Cancelar</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.button]}
+                  onPress={()=>{
+                              console.log(data)
+                              setModalVisible(false)                              
+                              }}>
+                  <Text style={styles.textStyle}>Guardar</Text>
+                </Pressable>
+              </View>
           </View>
         </View>
-    </View>
+    </Modal>
   )
 }
 
