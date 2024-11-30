@@ -27,9 +27,14 @@ export default function SecadoMain() {
     setResponseRegistros(responseSecado)
   }
   return (
-    <View style={{flex:1}}>
-      <Text>Para Inseminar</Text>
-      <ScrollView  horizontal={true}>
+    <View style={styles.container}>
+      <Text style={styles.title}>Para Inseminar</Text>
+      {
+        paraSecar.length === 0 ?
+
+        <Text>No hay registros</Text> :
+
+        <ScrollView  horizontal={true}>
         {
           paraSecar.map((item) => (
             <CardItem 
@@ -46,6 +51,9 @@ export default function SecadoMain() {
         }
       </ScrollView>
 
+      }
+      
+
       <InputSearch
         placeholder="Fecha, Nombre res"
         value={''}
@@ -56,11 +64,31 @@ export default function SecadoMain() {
 
     <ScrollView>
       {
-        dataSecado.map((registro) => {
-          return <ItemRegistro key={registro.ID} body={registro} />
-        })
+        dataSecado.map((registro) => 
+          <ItemRegistro 
+            key={registro.ID}
+            data={registro}
+            keyTitle1='ResNombre'
+            keyTitle2='Número'
+            restKeys={['Fecha', 'Veterinario', 'listInsumos']}
+            labels={['Fecha', 'Veterinario', 'Insumos']}
+            onDelete={()=>console.log('first')}
+            onEdit={()=>console.log('first')}
+          />
+        )
       }
       </ScrollView>
     </View>
   )
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 3,
+    margin: 5
+  },
+  title: {
+    fontSize: 14,
+    fontWeight: 'bold'
+  }
+})
