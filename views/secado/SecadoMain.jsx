@@ -34,7 +34,6 @@ export default function SecadoMain() {
   }
 
   const onOpenModal = () => {
-    console.log('helloooooooo')
     setModalVisible(true)
   }
 
