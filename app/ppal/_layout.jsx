@@ -12,7 +12,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/home.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -25,7 +25,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/animales.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -38,7 +38,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/produccion.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -51,7 +51,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/reproduccion.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -64,7 +64,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/servicios.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -77,7 +77,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/secado.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -90,7 +90,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/finanzas.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -103,7 +103,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/insumos.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -116,7 +116,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/fincas.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
@@ -129,7 +129,7 @@ export default function Layout() {
           options={{
             drawerIcon: ({ size }) => (
               <Image
-                source={require('../../assets/favicon.png')} // Ruta de tu imagen
+                source={require('../../assets/icons/user.png')} // Ruta de tu imagen
                 style={{ width: size, height: size, resizeMode: 'contain' }} // Ajusta el tamaño del icono
               />
             ),
