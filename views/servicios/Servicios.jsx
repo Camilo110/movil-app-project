@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View} from 'react-native'
 import { InputText } from '../../components/Inputs'
 import { useState, useEffect } from 'react'
 import { ScrollView } from 'react-native'
@@ -33,12 +33,14 @@ export default function ServiciosMain() {
   const configureDrawerOptions = () => {
     navigation.setOptions({
       headerRight: () => (
-        <Text
-          style={{ padding: 20, color: 'blue', fontWeight: 'bold' }}
+        <Pressable
+          style={{ marginRight: 20, margin:4 , backgroundColor: '#6994c5', padding: 5, borderRadius: 10 }}
           onPress={onOpenModal}
         >
-          Añadir
-        </Text>
+          <Text style={{margin:4 , color: 'white', fontWeight: 'bold', fontSize: 16 }}>
+            Añadir
+          </Text>
+        </Pressable>
       ),
     });
   };

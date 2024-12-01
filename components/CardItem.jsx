@@ -99,7 +99,7 @@ export default function CardItem({
     },
     tooltipText: {
       fontSize: 12,
-      color: 'black',
+      color: 'white',
     },
     text: {
       fontSize: 14,
@@ -113,7 +113,7 @@ export default function CardItem({
     button: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: '#007BFF',
+      backgroundColor: '#6994c5',
       padding: 7,
       borderRadius: 4,
       margin: 2,

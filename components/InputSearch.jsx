@@ -37,6 +37,7 @@ function filter(query, keys, data) {
 
 const styles = StyleSheet.create({
   searchInput: {
+    backgroundColor: 'white',
     height: 40,
     borderColor: '#ccc',
     borderWidth: 1,
