@@ -45,7 +45,7 @@ export default function ItemRegistro({ data, keyTitle1, keyTitle2, restKeys, lab
 const styles = StyleSheet.create({
   tarjetaRegistro: {
     marginHorizontal: 5,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#fff',
     padding: 10,
     borderRadius: 8,
     borderWidth: 1,
