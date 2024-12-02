@@ -12,7 +12,7 @@ export function ResItem({ res }) {
   return (
     <View style={styles.card}>
       <Link href={{
-          pathname: '/Reses/[res]',
+          pathname: 'ppal/Reses/[res]',
           params: { res: id }
         }}
          asChild>

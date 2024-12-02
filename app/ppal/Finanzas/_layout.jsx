@@ -1,4 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router'
 
 export default function _layout() {
@@ -9,7 +11,25 @@ export default function _layout() {
       <Tabs
         screenOptions={{
           headerShown: false
-        }}/>
+        }}
+      >
+        <Tabs.Screen
+          name="FinanzasMain"
+          options={{
+            title: 'Formulario',
+            tabBarIcon: ({ color }) => <FontAwesome5 name="clipboard-list" size={24} color={color} />,
+          }}
+        />
+        <Tabs.Screen
+          name="RegistrosFinanzas"
+          options={{
+            title: 'Registros',
+            tabBarIcon: ({ color }) => <FontAwesome name="list-ul" size={24} color={color} />,
+          }}
+        />
+
+
+      </Tabs>
     </View>
   )
 }

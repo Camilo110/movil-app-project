@@ -1,13 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet , Image} from 'react-native';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa un set de íconos
 
-export const CardDashboard = ({ title, info, icon= 'camera' }) => {
+export const CardDashboard = ({ title, info, icon= 'animales' }) => {
+  const uri = require(`../../../assets/icons/animales.png`)
   return (
     <View style={styles.card}>
       <View style={styles.containerTitle}>
-        <Icon name={icon} size={20} color="#6994c5" />
+      <Image
+            style={styles.image}
+            source={uri}
+            alt="Cow Image"
+      />
         <Text style={styles.title}>{title}</Text>
       </View>
       <Text style={styles.info}>{info}</Text>
@@ -28,12 +32,17 @@ CardDashboard.defaultProps = {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: 'white',
-    borderRadius: 8,
+    borderRadius: 15,
     padding: 16,
     alignItems: 'center',
     margin: 10,
     borderColor: '#6994c5',
     borderWidth: 2,
+  },
+  image: {
+    width: 30,
+    height: 30,
+    marginBottom: 8,
   },
   icon: {
     marginBottom: 8,

@@ -1,9 +1,9 @@
-import { View } from 'react-native'
+import {StyleSheet, View } from 'react-native'
 import { Stack } from 'expo-router'
 
 export default function _layout() {
   return (
-    <View style={{flex:1}}>
+    <View style={styles.container}>
       <Stack
       screenOptions={{
         headerShown: false
@@ -12,3 +12,11 @@ export default function _layout() {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    width: '100%',
+  },
+})

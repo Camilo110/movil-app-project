@@ -1,5 +1,5 @@
 
-import {  Dimensions } from "react-native";
+import {  Dimensions, View, Text} from "react-native";
 import { PieChart } from "react-native-chart-kit";
 
 
@@ -26,9 +26,25 @@ const dataConfig = (groupExpenses=[{label: 'Prueba 1', value: 310},
 }
 
 
-export default function PieGraphic({ data }) {
+export default function PieGraphic({ data, title}) {
 
   return (
+    <View
+      style={{
+        flex: 1,
+        width:'100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor:'white',
+        paddingTop:5,
+        borderRadius:20,
+        marginTop:5
+      }}
+    >
+      <Text style={{fontSize: 16, fontWeight: 'bold', color: '#333', marginBottom: 3, textAlign: 'center'}}>
+        {title}
+      </Text>
+        
      <PieChart
           data={dataConfig(data)}
           width={Dimensions.get("window").width * 0.9}
@@ -49,5 +65,6 @@ export default function PieGraphic({ data }) {
           center={[10, 0]}
           absolute
         />
+    </View>
   )
 }

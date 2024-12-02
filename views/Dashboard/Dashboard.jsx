@@ -38,13 +38,21 @@ export default function Dashboard() {
     <ScrollView>
       <View>
         <ScrollView horizontal>
-          <CardDashboard title="Animales" info="100" />
-          <CardDashboard title="Animales" info="100" />
-          <CardDashboard title="Animales" info="100" />
+          <CardDashboard title="Total Animales" info="42" />
+          <CardDashboard title="Total de Partos" info="2" />
+          <CardDashboard title="Total Leche (Lts)" info="641" />
+          <CardDashboard title="Total Carne (kg)" info="859" />
         </ScrollView>
-        <LineGraphic />
-        <LineGraphic />
-        <PieGraphic />
+        <LineGraphic
+          title='Producción de Leche' 
+        />
+        <LineGraphic 
+          title='Balance'
+        />
+        <PieGraphic data={DataHebrasMachos} title='Distribución de Animales' />
+        <PieGraphic data={DataTiposAnimales} title='Tipos de Animales' />
+        <PieGraphic data={DataRazas} title='Razas' />
+        <PieGraphic data={DataEdadesAnimales} title='Edades de Animales' />
       </View>
     </ScrollView>
     </View>
@@ -57,8 +65,38 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+    backgroundColor: '#f6f6f9'
   },
   modalView: {
     flexDirection: 'row',
   },
 })
+
+
+const DataHebrasMachos = [
+  { label: 'Hembras', value: 31 },
+  { label: 'Machos', value: 11 },
+];
+
+const DataTiposAnimales = [
+  { label: 'Leche', value: 25 },
+  { label: 'Carne', value: 12 },
+  { label: 'Doble Propósito', value: 5 },
+];
+
+const DataRazas = [
+  { label: 'Holstein', value: 18 },
+  { label: 'Jersey', value: 10 },
+  { label: 'Normando', value: 10 },
+  { label: 'Otros', value: 4 },
+];
+
+const DataEdadesAnimales = [
+  { label: '0 a 3 meses', value: 5 },
+  { label: '3 a 9 meses', value: 8 },
+  { label: '9 a 12 meses', value: 4 },
+  { label: '1 a 2 años', value: 10 },
+  { label: '2 a 3 años', value: 7 },
+  { label: '3 a 5 años', value: 5 },
+  { label: 'Mayores de 5 años', value: 3 },
+];
